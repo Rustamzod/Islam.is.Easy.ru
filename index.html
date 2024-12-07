@@ -57,3 +57,177 @@
     </footer>  
 </body>  
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вопросы и ответы</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .accordion {
+            margin: 20px 0;
+        }
+        .accordion-item {
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .accordion-header {
+            background-color: #f7f7f7;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .accordion-body {
+            padding: 10px 15px;
+            display: none;
+            background-color: #fff;
+            border-top: 1px solid #ccc;
+        }
+        .accordion-body.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Вопросы и ответы</h1>
+    <div class="accordion" id="faq">
+        <!-- Вопросы и ответы будут загружены здесь -->
+    </div>
+
+    <script>
+        // Массив с вопросами и ответами
+        const faqData = [
+            { question: "Что такое ислам?", answer: "Ислам — это монотеистическая религия, основанная на учениях пророка Мухаммада, который считается последним пророком в ряду пророков, включая Ибрагима, Моисея и Иисуса." },
+            { question: "Какое священное писание ислама?", answer: "Священное писание ислама — это Коран, который считается словом Бога, ниспосланным Мухаммаду." },
+            { question: "Каковы основные столпы ислама?", answer: "Пять столпов ислама: Шахада (свидетельство веры), Салат (молитва), Закят (пожертвование), Саум (пост), Хадж (паломничество)." },
+            { question: "Что такое Шахада?", answer: "Шахада — это свидетельство веры, которое гласит: «Нет бога, кроме Аллаха, и Мухаммад — его пророк»." },
+            { question: "Как часто мусульмане молятся?", answer: "Мусульмане молятся пять раз в день." },
+            // Добавьте остальные вопросы и ответы сюда
+        ];
+
+        // Функция для создания аккордеона
+        const faqContainer = document.getElementById('faq');
+        faqData.forEach(item => {
+            const accordionItem = document.createElement('div');
+            accordionItem.classList.add('accordion-item');
+
+            const header = document.createElement('div');
+            header.classList.add('accordion-header');
+            header.textContent = item.question;
+
+            const body = document.createElement('div');
+            body.classList.add('accordion-body');
+            body.textContent = item.answer;
+
+            header.addEventListener('click', () => {
+                body.classList.toggle('active');
+            });
+
+            accordionItem.appendChild(header);
+            accordionItem.appendChild(body);
+            faqContainer.appendChild(accordionItem);
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вопросы и ответы об исламе</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .question {
+            font-weight: bold;
+            cursor: pointer;
+            background: #f7f7f7;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .answer {
+            display: none;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fdfdfd;
+        }
+        .answer.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Вопросы и ответы об исламе</h1>
+        <div id="faq-container">
+            <!-- Здесь будут отображены вопросы и ответы -->
+        </div>
+    </div>
+
+    <script>
+        // Данные: Вопросы и ответы
+        const faqData = [
+            { question: "Что такое Закят?", answer: "Закят — это обязательное пожертвование на нужды бедных и нуждающихся, равное 2,5% от накопленного богатства." },
+            { question: "Что такое Хадж?", answer: "Хадж — это паломничество в Мекку, которое каждый мусульманин должен совершить хотя бы раз в жизни, если у него есть на это возможность." },
+            { question: "Каковы основные праздники в исламе?", answer: "Главные праздники: Ид al-Фитр (праздник окончания Рамадана) и Ид al-Адха (праздник жертвоприношения)." },
+            { question: "Что такое Рамадан?", answer: "Рамадан — это священный месяц поста, когда мусульмане воздерживаются от еды, питья и других удовольствий с рассвета до заката." },
+            { question: "Что означает слово \"мусульманин\"?", answer: "Мусульманин — это тот, кто принял ислам и следует его учениям." },
+            { question: "Каково значение слова \"Ислам\"?", answer: "Слово \"Ислам\" переводится как \"покорность\" или \"преданность\" Богу." },
+            { question: "Кто такой Пророк Мухаммад?", answer: "Мухаммад — последний пророк ислама, который получил откровения от Аллаха через ангела Гавриила." },
+            { question: "Каково значение города Мекка?", answer: "Мекка — священный город ислама, место рождения Мухаммада и расположение Каабы." },
+            { question: "Что такое Кааба?", answer: "Кааба — священное здание в Мекке, к которому обращаются мусульмане во время молитвы." },
+            { question: "Какова роль ангелов в исламе?", answer: "Ангелы в исламе — это существа, созданные Богом, которые выполняют его команды и охраняют людей." }
+            // Добавьте остальные вопросы и ответы в том же формате
+        ];
+
+        // Контейнер для вопросов и ответов
+        const faqContainer = document.getElementById('faq-container');
+
+        // Создание HTML-элементов для каждого вопроса и ответа
+        faqData.forEach(({ question, answer }) => {
+            // Вопрос
+            const questionElement = document.createElement('div');
+            questionElement.classList.add('question');
+            questionElement.textContent = question;
+
+            // Ответ
+            const answerElement = document.createElement('div');
+            answerElement.classList.add('answer');
+            answerElement.textContent = answer;
+
+            // Обработка клика для показа/скрытия ответа
+            questionElement.addEventListener('click', () => {
+                answerElement.classList.toggle('active');
+            });
+
+            // Добавление элементов в контейнер
+            faqContainer.appendChild(questionElement);
+            faqContainer.appendChild(answerElement);
+        });
+    </script>
+</body>
+</html>
