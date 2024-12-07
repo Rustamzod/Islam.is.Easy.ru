@@ -3,106 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Часто задаваемые вопросы об исламе</title>
+    <title>Исламский сайт - Узнай об исламе</title>
     <style>
+        /* Основные стили */
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
             background-color: #f9f9f9;
             color: #333;
-            margin: 0;
+        }
+
+        header {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
             padding: 20px;
         }
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            background-color: #004B80;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        section h2 {
             color: #007BFF;
         }
+
         .faq-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
         }
-        .accordion {
-            margin: 20px 0;
-        }
-        .accordion-item {
+
+        .faq-item {
             border: 1px solid #ccc;
             border-radius: 5px;
             margin-bottom: 10px;
             overflow: hidden;
         }
-        .accordion-header {
+
+        .faq-question {
             background-color: #f7f7f7;
             padding: 10px 15px;
             cursor: pointer;
             font-weight: bold;
         }
-        .accordion-body {
+
+        .faq-answer {
             padding: 10px 15px;
             display: none;
-            background-color: #fff;
-            border-top: 1px solid #ccc;
+            background-color: white;
         }
-        .accordion-body.active {
+
+        .faq-answer.active {
             display: block;
+        }
+
+        footer {
+            background-color: #004B80;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
-    <h1>Часто задаваемые вопросы об исламе</h1>
-    <div class="faq-container">
-        <div class="accordion" id="faq"></div>
-    </div>
-    <script>
-        const faqData = [
-            { question: "Кто такой Пророк Мухаммад?", answer: "Мухаммад — последний пророк ислама, который получил откровения от Аллаха через ангела Гавриила." },
-            { question: "Каково значение города Мекка?", answer: "Мекка — священный город ислама, место рождения Мухаммада и расположение Каабы." },
-            { question: "Что такое Кааба?", answer: "Кааба — священное здание в Мекке, к которому обращаются мусульмане во время молитвы." },
-            { question: "Какова роль ангелов в исламе?", answer: "Ангелы в исламе — это существа, созданные Богом, которые выполняют его команды и охраняют людей." },
-            { question: "Что такое Сунна?", answer: "Сунна — это практика и учения пророка Мухаммада, которые служат образцом для мусульман." },
-            { question: "Кто такие сахабы?", answer: "Сахабы — это сподвижники пророка Мухаммада, его последователи, которые помогали ему в распространении ислама." },
-            { question: "Что такое Шариат?", answer: "Шариат — это исламское право, основанное на Коране и Сунне, которое регулирует жизнь мусульман." },
-            { question: "Какова роль женщины в исламе?", answer: "Женщины в исламе имеют равные права с мужчинами в духовной и социальной жизни, хотя их роль может варьироваться в зависимости от культуры." },
-            { question: "Что такое Иман?", answer: "Иман — это вера в Аллаха, его ангелов, книги, пророков и Судный день." },
-            { question: "Каковы основные отличия между суннитами и шиитами?", answer: "Сунниты и шииты различаются в вопросах лидерства и интерпретации ислама, но оба признают основные столпы веры." },
-            { question: "Что такое хадисы?", answer: "Хадисы — это записи слов и дел пророка Мухаммада, которые служат руководством для мусульман." },
-            { question: "Как мусульмане относятся к другим религиям?", answer: "Ислам проповедует уважение к другим религиям, но также утверждает уникальность своего учения." },
-            { question: "Что такое джихад?", answer: "Джихад — это усилие в пути к Богу, которое может включать как духовную борьбу, так и защиту ислама." },
-            { question: "Как мусульмане отмечают праздники?", answer: "Праздники отмечаются молитвами, семейными сборами и благотворительностью." },
-            { question: "Что такое 'вера в судьбу'?", answer: "Вера в судьбу подразумевает, что все события происходят по воле Бога, и мусульмане должны принимать это с терпением." },
-            { question: "Как мусульмане относятся к бедным?", answer: "Ислам предписывает заботиться о бедных и нуждающихся через закят и другие формы благотворительности." },
-            { question: "Что такое 'тафсир'?", answer: "Тафсир — это комментарии и объяснения к Корану." },
-            { question: "Какова роль семьи в исламе?", answer: "Семья считается основой общества, и ислам подчеркивает важность уважения и заботы о членах семьи." },
-            { question: "Что такое 'мусульманская этика'?", answer: "Мусульманская этика основывается на принципах справедливости, честности и сострадания." },
-            { question: "Какова цель жизни мусульманина?", answer: "Цель жизни мусульманина заключается в поклонении Аллаху и следовании его заповедям." }
-        ];
 
-        const faqContainer = document.getElementById('faq');
+<header>
+    <h1>Добро пожаловать на Исламский сайт</h1>
+    <p>Откройте для себя знания об исламе, его учениях и пророке Мухаммаде (мир ему).</p>
+</header>
 
-        faqData.forEach(({ question, answer }) => {
-            const item = document.createElement('div');
-            item.classList.add('accordion-item');
+<nav>
+    <a href="#faq">Частые вопросы</a>
+    <a href="#must-know">Что нужно знать</a>
+</nav>
 
-            const header = document.createElement('div');
-            header.classList.add('accordion-header');
-            header.textContent = question;
+<div class="container">
+    <!-- Раздел Частые вопросы -->
+    <section id="faq">
+        <h2>Самые частые вопросы об исламе</h2>
+        <div class="faq-container" id="faq-container"></div>
+    </section>
 
-            const body = document.createElement('div');
-            body.classList.add('accordion-body');
-            body.textContent = answer;
+    <!-- Раздел Что нужно знать -->
+    <section id="must-know">
+        <h2>Что нужно знать каждому мусульманину</h2>
+        <p>
+            Ислам — это путь покорности Аллаху, основанный на Коране и Сунне. 
+            Каждый мусульманин обязан верить в единство Аллаха (таухид), молиться (салят), соблюдать пост (саум), 
+            выплачивать закят и совершать хадж при возможности.
+        </p>
+        <ul>
+            <li><strong>Единство Аллаха:</strong> Аллах говорит в Коране: "Скажи: Он — Аллах Единый" (Коран 112:1).</li>
+            <li><strong>Молитва:</strong> "Воистину, молитва предписана верующим в определенное время" (Коран 4:103).</li>
+            <li><strong>Пост:</strong> "О те, которые уверовали! Вам предписан пост, как он был предписан тем, кто был до вас, — быть может, вы устрашитесь!" (Коран 2:183).</li>
+            <li><strong>Закят:</strong> "И совершайте молитву, и отдавайте закят, и кланяйтесь вместе с теми, кто кланяется" (Коран 2:43).</li>
+            <li><strong>Хадж:</strong> "И соверши паломничество к Дому" (Коран 22:27).</li>
+        </ul>
+    </section>
+</div>
 
-            header.addEventListener('click', () => {
-                body.classList.toggle('active');
-            });
+<footer>
+    <p>&copy; 2024 Исламский сайт. Все права защищены.</p>
+</footer>
 
-            item.appendChild(header);
-            item.appendChild(body);
-            faqContainer.appendChild(item);
+<script>
+    // Данные для частых вопросов
+    const faqData = [
+        { question: "Что такое ислам?", answer: "Ислам — это религия, основанная на вере в единого Бога (Аллаха) и следовании учениям пророка Мухаммада (мир ему)." },
+        { question: "Что такое Коран?", answer: "Коран — это священная книга ислама, которая была ниспослана пророку Мухаммаду (мир ему) через ангела Джибриила." },
+        { question: "Кто такой пророк Мухаммад?", answer: "Пророк Мухаммад (мир ему) — последний посланник Аллаха, который донёс людям откровения Аллаха." },
+        { question: "Что такое пятикратная молитва (салят)?", answer: "Салят — это ежедневная молитва, совершаемая пять раз в день в строго установленные времена." },
+        { question: "Что такое хадж?", answer: "Хадж — это паломничество в священный город Мекку, обязательное для каждого мусульманина, если он в состоянии его совершить." },
+        { question: "Что означает слово 'мусульманин'?", answer: "Мусульманин — это тот, кто покоряется Аллаху и следует исламу." },
+        { question: "Что такое закят?", answer: "Закят — это обязательное пожертвование, которое мусульмане дают на помощь нуждающимся." },
+        { question: "Что такое пост в месяц Рамадан?", answer: "Пост в месяц Рамадан — это воздержание от еды, питья и других удовольствий от рассвета до заката." },
+        { question: "Какие основные праздники в исламе?", answer: "Два главных праздника в исламе: Ид аль-Фитр (окончание Рамадана) и Ид аль-Адха (праздник жертвоприношения)." },
+        { question: "Что такое Таухид?", answer: "Таухид — это вера в абсолютное единство Аллаха." }
+    ];
+
+    // Генерация вопросов и ответов
+    const faqContainer = document.getElementById('faq-container');
+    faqData.forEach(({ question, answer }) => {
+        const faqItem = document.createElement('div');
+        faqItem.classList.add('faq-item');
+
+        const faqQuestion = document.createElement('div');
+        faqQuestion.classList.add('faq-question');
+        faqQuestion.textContent = question;
+
+        const faqAnswer = document.createElement('div');
+        faqAnswer.classList.add('faq-answer');
+        faqAnswer.textContent = answer;
+
+        faqQuestion.addEventListener('click', () => {
+            faqAnswer.classList.toggle('active');
         });
-    </script>
+
+        faqItem.appendChild(faqQuestion);
+        faqItem.appendChild(faqAnswer);
+        faqContainer.appendChild(faqItem);
+    });
+</script>
+
 </body>
 </html>
-
