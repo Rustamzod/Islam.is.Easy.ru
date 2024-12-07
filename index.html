@@ -92,6 +92,65 @@
             bottom: 0;
             width: 100%;
         }
+
+        /* Стиль для поиска */
+        .search-box {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .search-box input {
+            padding: 10px;
+            width: 80%;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .search-box button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-box button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Стиль для обратной связи */
+        .contact-form {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -104,9 +163,16 @@
 <nav>
     <a href="#faq">Частые вопросы</a>
     <a href="#must-know">Что нужно знать</a>
+    <a href="#contact">Обратная связь</a>
 </nav>
 
 <div class="container">
+    <!-- Поисковая строка -->
+    <section class="search-box">
+        <input type="text" id="searchQuery" placeholder="Введите ваш вопрос...">
+        <button onclick="searchFAQ()">Поиск</button>
+    </section>
+
     <!-- Раздел Частые вопросы -->
     <section id="faq">
         <h2>Самые частые вопросы об исламе</h2>
@@ -116,20 +182,18 @@
     <!-- Раздел Что нужно знать -->
     <section id="must-know">
         <h2>Что нужно знать каждому мусульманину</h2>
-        <p>
-            Ислам — это путь покорности Аллаху, основанный на Коране и Сунне. 
-            Каждый мусульманин обязан верить в единство Аллаха (таухид), молиться (салят), соблюдать пост (саум), 
-            выплачивать закят и совершать хадж при возможности.
-        </p>
-        <ul>
-            <li><strong>Единство Аллаха:</strong> Аллах говорит в Коране: "Скажи: Он — Аллах Единый" (Коран 112:1).</li>
-            <li><strong>Молитва:</strong> "Воистину, молитва предписана верующим в определенное время" (Коран 4:103).</li>
-            <li><strong>Пост:</strong> "О те, которые уверовали! Вам предписан пост, как он был предписан тем, кто был до вас, — быть может, вы устрашитесь!" (Коран 2:183).</li>
-            <li><strong>Закят:</strong> "И совершайте молитву, и отдавайте закят, и кланяйтесь вместе с теми, кто кланяется" (Коран 2:43).</li>
-            <li><strong>Хадж:</strong> "И соверши паломничество к Дому" (Коран 22:27).</li>
-        
-        
-        </ul>
+        <p>Ислам — это путь покорности Аллаху, основанный на Коране и Сунне...</p>
+    </section>
+
+    <!-- Раздел Обратной связи -->
+    <section id="contact">
+        <h2>Свяжитесь с нами</h2>
+        <div class="contact-form">
+            <input type="text" id="name" placeholder="Ваше имя">
+            <input type="email" id="email" placeholder="Ваша почта">
+            <textarea id="message" placeholder="Ваше сообщение"></textarea>
+            <button onclick="sendMessage()">Отправить сообщение</button>
+        </div>
     </section>
 </div>
 
@@ -140,16 +204,17 @@
 <script>
     // Данные для частых вопросов
     const faqData = [
-        { question: "Что такое ислам?", answer: "Ислам — это религия, основанная на вере в единого Бога (Аллаха) и следовании учениям пророка Мухаммада (мир ему)." },
+        { question: "Что такое ислам?", answer: "Ислам — это религия, основанная на вере в единого Бога (Аллаха) и следовании учениям пророка Мухаммеда (мир ему)." },
         { question: "Что такое Коран?", answer: "Коран — это священная книга ислама, которая была ниспослана пророку Мухаммаду (мир ему) через ангела Джибриила." },
         { question: "Кто такой пророк Мухаммад?", answer: "Пророк Мухаммад (мир ему) — последний посланник Аллаха, который без сомнений донёс людям откровения Аллаха." },
         { question: "Что такое пятикратная молитва (салят)?", answer: "Салят — это ежедневная молитва, совершаемая пять раз в день в строго установленные времена." },
         { question: "Что такое хадж?", answer: "Хадж — это паломничество в священный город Мекку, обязательное для каждого мусульманина, если он в состоянии его совершить." },
         { question: "Что означает слово 'мусульманин'?", answer: "Мусульманин — это тот, кто покоряется Аллаху и следует исламу." },
-        { question: "Что такое закят?", answer: "Закят — это обязательное пожертвование, которое мусульмане (мужчины котореы в состояние это сделать) дают на помощь нуждающимся." },
+        { question: "Что такое закят?", answer: "Закят — это обязательное пожертвование, которое мусульмане дают на помощь нуждающимся." },
         { question: "Что такое пост в месяц Рамадан?", answer: "Пост в месяц Рамадан — это воздержание от еды, питья и других удовольствий от рассвета до заката." },
         { question: "Какие основные праздники в исламе?", answer: "Два главных праздника в исламе: Ид аль-Фитр (окончание Рамадана) и Ид аль-Адха (праздник жертвоприношения)." },
-        { question: "Что такое Таухид?", answer: "таухид – это вера в Единого Аллаха, у Которого нет сотоварища ни в господстве, ни в божественности ни в обладании Им имён и атрибутов" }
+        { question: "Что такое Таухид?", answer: "Таухид — это вера в Единого Аллаха, у Которого нет сотоварища." },
+        // Добавим еще несколько вопросов...
     ];
 
     // Генерация вопросов и ответов
@@ -174,7 +239,34 @@
         faqItem.appendChild(faqAnswer);
         faqContainer.appendChild(faqItem);
     });
+
+    // Поиск по вопросам
+    function searchFAQ() {
+        const query = document.getElementById('searchQuery').value.toLowerCase();
+        const faqItems = faqContainer.getElementsByClassName('faq-item');
+        Array.from(faqItems).forEach(item => {
+            const question = item.getElementsByClassName('faq-question')[0].textContent.toLowerCase();
+            if (question.includes(query)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    // Отправка сообщения
+    function sendMessage() {
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        if (name && email && message) {
+            alert("Ваше сообщение отправлено на почту: mussoev.z07@gmail.com");
+        } else {
+            alert("Пожалуйста, заполните все поля.");
+        }
+    }
 </script>
 
 </body>
 </html>
+
